@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>HJSpace</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="HJSpace"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="HJSpace"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="11.14面经 B+树的操作时间复杂度增加：logn 删除：logn 查找：logn 时间复杂度更低的数据结构红黑树 自平衡二叉树 哈希表 o（1） Mysql的ACID是什么，如何保证原子性：事务要么做完要么不做 一致性：状态改变不影响数据库的完整性约束 隔离性：一个事务不影响另一个事务 持久性：一但写入，永久修改，数据库故障也不丢失 保证方法：事务隔离级别，锁，日志，快照等级制 Go的chan"><meta property="og:type" content="blog"><meta property="og:title" content="HJSpace"><meta property="og:url" content="http://example.com/2023/11/14/B+%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"><meta property="og:site_name" content="HJSpace"><meta property="og:description" content="11.14面经 B+树的操作时间复杂度增加：logn 删除：logn 查找：logn 时间复杂度更低的数据结构红黑树 自平衡二叉树 哈希表 o（1） Mysql的ACID是什么，如何保证原子性：事务要么做完要么不做 一致性：状态改变不影响数据库的完整性约束 隔离性：一个事务不影响另一个事务 持久性：一但写入，永久修改，数据库故障也不丢失 保证方法：事务隔离级别，锁，日志，快照等级制 Go的chan"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2023-11-14T07:28:55.478Z"><meta property="article:modified_time" content="2023-11-14T07:28:55.757Z"><meta property="article:author" content="Starry sky, Architecture and Travel"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2023/11/14/B+%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"},"headline":"HJSpace","image":["http://example.com/img/og_image.png"],"datePublished":"2023-11-14T07:28:55.478Z","dateModified":"2023-11-14T07:28:55.757Z","author":{"@type":"Person","name":"Starry sky, Architecture and Travel"},"publisher":{"@type":"Organization","name":"HJSpace","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"11.14面经 B+树的操作时间复杂度增加：logn 删除：logn 查找：logn 时间复杂度更低的数据结构红黑树 自平衡二叉树 哈希表 o（1） Mysql的ACID是什么，如何保证原子性：事务要么做完要么不做 一致性：状态改变不影响数据库的完整性约束 隔离性：一个事务不影响另一个事务 持久性：一但写入，永久修改，数据库故障也不丢失 保证方法：事务隔离级别，锁，日志，快照等级制 Go的chan"}</script><link rel="canonical" href="http://example.com/2023/11/14/B+%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="HJSpace" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-11-14T07:28:55.478Z" title="2023/11/14 15:28:55">2023-11-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-11-14T07:28:55.757Z" title="2023/11/14 15:28:55">2023-11-14</time></span><span class="level-item">7 minutes read (About 1124 words)</span></div></div><div class="content"><p>11.14面经</p>
+<h3 id="B-树的操作时间复杂度"><a href="#B-树的操作时间复杂度" class="headerlink" title="B+树的操作时间复杂度"></a>B+树的操作时间复杂度</h3><p>增加：logn</p>
+<p>删除：logn</p>
+<p>查找：logn</p>
+<h3 id="时间复杂度更低的数据结构"><a href="#时间复杂度更低的数据结构" class="headerlink" title="时间复杂度更低的数据结构"></a>时间复杂度更低的数据结构</h3><p>红黑树 自平衡二叉树</p>
+<p>哈希表 o（1）</p>
+<h3 id="Mysql的ACID是什么，如何保证"><a href="#Mysql的ACID是什么，如何保证" class="headerlink" title="Mysql的ACID是什么，如何保证"></a>Mysql的ACID是什么，如何保证</h3><p>原子性：事务要么做完要么不做</p>
+<p>一致性：状态改变不影响数据库的完整性约束</p>
+<p>隔离性：一个事务不影响另一个事务</p>
+<p>持久性：一但写入，永久修改，数据库故障也不丢失</p>
+<p>保证方法：事务隔离级别，锁，日志，快照等级制</p>
+<h3 id="Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据"><a href="#Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据" class="headerlink" title="Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据"></a>Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据</h3><p>作用是协程之间的数据传输和同步，可以存储任何类型包括内置类型（整数，字符串），自定义类型（接口等）</p>
+<h3 id="Channel的底层实现"><a href="#Channel的底层实现" class="headerlink" title="Channel的底层实现"></a>Channel的底层实现</h3><p>两个等待队列和锁来实现的</p>
+<ol>
+<li><strong>等待队列：</strong> 每个 channel 都有两个相关联的等待队列，一个用于存储发送操作的 goroutine，另一个用于存储接收操作的 goroutine。当一个 goroutine 尝试发送或接收数据时，如果 channel 当前为空（对于接收操作）或已满（对于发送操作），则该 goroutine 将会被加入到相应的等待队列中，直到条件满足。这样可以保证发送和接收操作的顺序性和安全性。</li>
+<li><strong>锁：</strong> 除了等待队列，每个 channel 还使用了互斥锁来保护内部数据结构，以确保并发访问的安全性。在进行发送和接收操作时，需要先获取相应的锁，以防止多个 goroutine 同时修改 channel 的状态。</li>
+</ol>
+<h3 id="Go的协程调度模型"><a href="#Go的协程调度模型" class="headerlink" title="Go的协程调度模型"></a>Go的协程调度模型</h3><p>一个线程管理多个协程，线程称为M（machine），有个线程队列，还有个全局队列，还有个调度器</p>
+<p>以下是 Goroutine 调度模型的关键概念和特点：</p>
+<ol>
+<li><strong>Goroutine：</strong> Goroutine 是 Go 语言并发编程的基本单位。它是一种轻量级的执行体，由 Go 运行时（runtime）管理。与传统的线程相比，Goroutine 的创建和销毁开销很小，可以高效地创建大量的 Goroutine。</li>
+<li><strong>调度器：</strong> Go 语言的运行时包含了一个调度器，负责将 Goroutine 安排到操作系统线程上执行。调度器会根据一定的策略将 Goroutine 随机分配给线程，并在需要时进行抢占式调度。</li>
+<li><strong>操作系统线程：</strong> 在 Goroutine 调度模型中，操作系统线程由 Go 运行时管理，被称为 M（Machine）。每个 M 都有一个固定大小的 Goroutine 队列，它负责执行队列中的 Goroutine。当一个 Goroutine 阻塞时，M 可以将其从队列中移除，并执行其他可运行的 Goroutine。</li>
+<li><strong>全局运行队列：</strong> 除了每个 M 自己的 Goroutine 队列外，调度器还维护了一个全局运行队列（称为 G 队列），用于存放所有可运行的 Goroutine。当某个 M 的 Goroutine 队列为空时，它可以从全局队列中获取 Goroutine 进行执行。</li>
+</ol>
+<h3 id="创建一个goroutine时会给它分配什么数据"><a href="#创建一个goroutine时会给它分配什么数据" class="headerlink" title="创建一个goroutine时会给它分配什么数据"></a>创建一个goroutine时会给它分配什么数据</h3><ol>
+<li><strong>栈空间（Stack Space）：</strong> 每个 Goroutine 都有自己的栈空间，用于存储局部变量、函数调用信息和其他相关数据。栈空间的大小默认为 2KB，并且可以根据需要自动增长。每个 Goroutine 的栈空间是独立的，因此它们可以同时执行不同的函数调用。</li>
+<li><strong>Goroutine 结构体（Goroutine Struct）：</strong> 每个 Goroutine 都有一个与之关联的 Goroutine 结构体，其中包含了一些重要的信息，如 Goroutine 的状态、栈空间的起始地址等。这个结构体由 Go 运行时管理，用于跟踪和控制 Goroutine 的执行。</li>
+<li><strong>Goroutine 栈指针（Stack Pointer）：</strong> Goroutine 栈指针是一个指向当前 Goroutine 栈顶的指针，用于记录当前 Goroutine 的执行位置。当 Goroutine 需要被暂停或切换到其他 Goroutine时，栈指针的值将被保存，并在再次执行该 Goroutine 时恢复。</li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p><a href="http://example.com/2023/11/14/B+树的操作时间复杂度/">http://example.com/2023/11/14/B+树的操作时间复杂度/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Starry sky, Architecture and Travel</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2023-11-14</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-11-14</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/11/14/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E8%B0%83%E4%BC%98/"><span class="level-item"> </span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="HanJ Young"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HanJ Young</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">45</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/codewhale-my" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-14T07:28:55.478Z">2023-11-14</time></p><p class="title"><a href="/2023/11/14/B+%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-14T02:55:50.987Z">2023-11-14</time></p><p class="title"><a href="/2023/11/14/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%E8%B0%83%E4%BC%98/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-13T09:14:31.793Z">2023-11-13</time></p><p class="title"><a href="/2023/11/13/31.%20%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-09T07:47:53.149Z">2023-11-09</time></p><p class="title"><a href="/2023/11/09/%E5%A4%8D%E4%B9%A0likou/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-08T07:53:29.975Z">2023-11-08</time></p><p class="title"><a href="/2023/11/08/11.8%E9%9D%A2%E7%BB%8F/"> </a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">45</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="HJSpace" height="28"></a><p class="is-size-7"><span>&copy; 2023 Starry sky, Architecture and Travel</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

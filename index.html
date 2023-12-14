@@ -29,7 +29,253 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="HJSpace" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-12-01T02:56:31.975Z" title="2023/12/1 10:56:31">2023-12-01</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-12-01T02:56:32.136Z" title="2023/12/1 10:56:32">2023-12-01</time></span><span class="level-item">a minute read (About 196 words)</span></div></div><div class="content"><h3 id="560-和为-K-的子数组"><a href="#560-和为-K-的子数组" class="headerlink" title="560. 和为 K 的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/">560. 和为 K 的子数组</a></h3><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你统计并返回 <em>该数组中和为 <code>k</code> 的子数组的个数</em> 。</p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="HJSpace" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-12-14T09:06:48.114Z" title="2023/12/14 17:06:48">2023-12-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-12-14T09:06:48.350Z" title="2023/12/14 17:06:48">2023-12-14</time></span><span class="level-item">5 minutes read (About 759 words)</span></div></div><div class="content"><p>12.14面经</p>
+<p>MQ积压如何解决：</p>
+<p>首先要查看消费者端是不是出了问题，比如mysql没执行导致挂起</p>
+<p>MQ积压，还可以做一个临时的存储空间，再加上n个队列，配上n个机器执行消费者</p>
+<p>MQ只发一次还是至少发一次</p>
+<p>两种模式都有，在可靠性要求高的场合只发一次，其他场合可以至少发一次</p>
+<p>MQ重复或丢失如何解决</p>
+<p>确认机制（防丢失）</p>
+<p>幂等性设计（防重复）</p>
+<p>使用消息标识符ID（防重复）</p>
+<p>事务机制，通过事务机制可以确保消息要么完整地发送和处理，要么完全回滚，避免消息丢失或者重复。（防重复）</p>
+<p>MQ如何实现只发一次</p>
+<p>确认机制（防丢失）</p>
+<p>使用消息标识符ID（防重复）</p>
+<p>事务机制，通过事务机制可以确保消息要么完整地发送和处理，要么完全回滚，避免消息丢失或者重复。（防重复）</p>
+<p>IO多路复用</p>
+<p>给一组设备标识符，这个不空闲就去问下一个</p>
+<p>区别：</p>
+<p>阻塞式IO：访问设备文件标识符，在忙就阻塞</p>
+<p>非阻塞式IO：访问设备文件标识符，在忙就去做其他事</p>
+<p>Go实现面向对象</p>
+<p>Go可以用结构体来实现面向对象</p>
+<p>也有接口</p>
+<p>不像其他语言那样显式的实现OOB，但是也可以实现OOB</p>
+<p>mysql的锁有那些</p>
+<p>表锁</p>
+<p>行锁：不可重复读</p>
+<p>共享锁</p>
+<p>排他锁</p>
+<p>间隙锁：幻读</p>
+<p>Next-Key锁：行锁+间隙锁</p>
+<p>java锁有哪些</p>
+<p>共享锁</p>
+<p>排他锁</p>
+<p>自旋锁</p>
+<p>非自旋</p>
+<p>乐观锁</p>
+<p>悲观锁</p>
+<p>什么时候使用表锁</p>
+<p>表锁：开销大，一般不用</p>
+<p>只读表</p>
+<p>小表</p>
+<p>对于需要全表扫描的操作：确保操作的原子性，同时避免了其他事务对数据进行修改的风险。</p>
+<p>解决幻读</p>
+<p>什么时候使用间隙锁</p>
+<p>防止幻读：读的时候增删了数据，导致前后不一致</p>
+<p>间隙锁是显示使用还是隐式使用</p>
+<p>隐式使用，数据库自动定义</p>
+<p>主键索引和唯一索引的区别是</p>
+<p>主键索引：非空性，只能有一个</p>
+<p>唯一索引可以有多个，不要求非空性</p>
+<p>联合索引 a， b， c 使用 a &#x3D; 1 and c &#x3D; 2使用索引吗</p>
+<p>可以，但有以下的一些注意事项</p>
+<p>如果是包含范围查找，比如 a &#x3D; 1 and b &lt;2 and c &#x3D; 2</p>
+<p>则c &#x3D; 2不生效，范围查找右边的都不生效</p>
+<p>例如，如果查询条件是b &#x3D; 3 and c &#x3D; 2，则无法有效使用(a, b, c)联合索引，因为查询条件中没有包含索引的第一个列a。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-12-13T09:45:22.092Z" title="2023/12/13 17:45:22">2023-12-13</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-12-13T09:52:34.791Z" title="2023/12/13 17:52:34">2023-12-13</time></span><span class="level-item">6 minutes read (About 844 words)</span></div></div><div class="content"><p>HashMap会产生哪些并发安全？如何解决的</p>
+<p>多个进程修改同一个哈希值，解决如下：</p>
+<p>ConcurrentHashMap，synchronizedMap</p>
+<p> 说一下ConcurrentHashMap是如何实现的线程安全的</p>
+<p>分段锁，对hash表分成segment锁</p>
+<p>除了ConcurrentHashMap，还可以如何将HashMap变为线程安全的</p>
+<p>collections.synchronizedMap</p>
+<p> Redis常见的数据结构有哪些？以及底层是如何实现的？</p>
+<p>列表，字符串，哈希，set，流</p>
+<p>列表：双向链表+压缩列表</p>
+<p>字符串：动态字符串，可变大小</p>
+<p>哈希：类似于java的HashMap，数组 + 链表</p>
+<p>set：类似于HashMap</p>
+<p>流：实现发布订阅机制，消息队列</p>
+<p>项目中为什么引入Redis呢？和本地缓存有哪些区别？</p>
+<p>存储读取效率更高</p>
+<p>分布式</p>
+<p>持久化</p>
+<p>支持复杂数据结构</p>
+<p>发布订阅机制</p>
+<p>MySQL的char和varchar有什么区别？</p>
+<p>char定长，定义时需确定长度</p>
+<p>varchar变长</p>
+<p> 对这两个字段建立索引，有哪些需要注意的地方嘛?</p>
+<p>必须指定varchar索引的长度，否则不知道怎么分配空间，数据类型直接决定数据存储量</p>
+<p>索引有哪些分类嘛？</p>
+<p>主键索引</p>
+<p>唯一索引：列值唯一</p>
+<p>聚集索引：物理顺序和索引顺序一致，直接查找到数据</p>
+<p>非聚集索引</p>
+<p>复合索引：多个列一个索引</p>
+<p>覆盖索引：减少回表（回表：回表（Lookup）是数据库查询优化中的一个概念，指的是当使用非覆盖索引进行查询时，需要根据索引结果再回到原始数据表中获取额外的数据列，这个过程就称为回表。</p>
+<p>举个例子，假设有一张表包含ID、姓名和年龄三列，其中ID为主键，并在姓名列上创建了一个非覆盖索引。当执行如下查询语句：</p>
+<p>SELECT AGE FROM TABLE WHERE NAME &#x3D; ‘John’;</p>
+<p>因为只在姓名列上创建了索引，所以查询引擎会首先使用该索引定位符合条件的行，然后再回到原始数据表中查找对应的年龄列值，这个查找年龄列的过程就称为回表。）</p>
+<p>你在项目中尝试过优化索引嘛？</p>
+<p>避免过度索引：索引覆盖过大不使用，转而全表查找</p>
+<p>减少回表</p>
+<p>使用复合索引</p>
+<p>避免使用函数在索引列上进行计算：在查询语句中，应尽量避免在索引列上使用函数进行计算，因为这样会使MySQL无法使用索引，而需要进行全表扫描。</p>
+<p>说一下Explain会返回哪些参数</p>
+<p>Explain用来查询执行计划分析的，返回诸如：</p>
+<ol>
+<li><p>ID：每个查询计划节点的唯一标识符。</p>
+</li>
+<li><p>TABLE：指示涉及到的表，以及表的别名</p>
+</li>
+<li><p>TYPE：表示访问表的方式，包括常见的值有ALL（全表扫描）、INDEX（使用索引进行扫描）、RANGE（范围扫描）等。</p>
+</li>
+<li><p>FILTERED：表示通过索引条件进行过滤的行的百分比</p>
+</li>
+</ol>
+<p>等</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-12-12T08:44:24.167Z" title="2023/12/12 16:44:24">2023-12-12</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-12-12T09:31:44.989Z" title="2023/12/12 17:31:44">2023-12-12</time></span><span class="level-item">4 minutes read (About 583 words)</span></div></div><div class="content"><p>12.12 面经</p>
+<p>http和https的区别：</p>
+<p>RSA算法过程：</p>
+<p><img src="C:\Users\Pleasant\AppData\Roaming\Typora\typora-user-images\image-20231212164420243.png" alt="image-20231212164420243"></p>
+<p>get 和 post区别：</p>
+<p>get参数在url，post在head，更安全，可以传更多数据</p>
+<p> ArrayList和LinkedList的区别：</p>
+<p>一个数组一个链表，一个查询快，一个插入删除快</p>
+<p>HashMap的底层数据结构<br>数组 + 链表&#x2F;红黑树，数组作为存储桶，存放链表。哈希冲突时（即哈希算法得到的索引值相同），存储在同一链表中</p>
+<p>HashMap会产生哪些并发安全？如何解决的？</p>
+<p>在多线程环境下，HashMap可能会出现以下并发安全问题：</p>
+<ol>
+<li>线程安全：HashMap不是线程安全的，即多个线程同时对HashMap进行读写操作可能导致数据不一致或者抛出ConcurrentModificationException异常。</li>
+<li>死锁：如果在使用HashMap时没有正确处理并发访问，可能会导致死锁情况的发生。</li>
+</ol>
+<p>为了解决HashMap的并发安全问题，可以采取以下方法：</p>
+<ol>
+<li>使用Collections.synchronizedMap()方法将HashMap转换为线程安全的Map。这样可以获取一个同步的Map对象，从而保证多线程环境下的安全访问。但需要注意的是，虽然这样可以解决线程安全问题，但并不能保证高效的并发访问。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CodeMap&lt;K, V&gt; synchronizedMap = Collections.synchronizedMap(new HashMap&lt;&gt;());</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用ConcurrentHashMap类，它是Java并发包中提供的线程安全的HashMap实现。ConcurrentHashMap通过分段锁（Segment）来保证并发访问的安全性，使得多个线程可以同时对不同的段进行操作，提高了并发访问的效率。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CodeMap&lt;K, V&gt; concurrentMap = new ConcurrentHashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用读写锁（ReentrantReadWriteLock）来保护HashMap。通过使用读写锁，可以在读操作时允许多个线程并发访问，而在写操作时只允许单个线程进行操作，以此保证并发访问的安全性。</li>
+</ol>
+<p>除了以上方法，还可以使用同步块或者自定义的并发控制机制来保证HashMap的并发安全。选择合适的方法取决于具体的应用场景和需求。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-12-11T01:43:52.868Z" title="2023/12/11 09:43:52">2023-12-11</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-12-11T06:29:37.829Z" title="2023/12/11 14:29:37">2023-12-11</time></span><span class="level-item">11 minutes read (About 1703 words)</span></div></div><div class="content"><h3 id="flowable调研"><a href="#flowable调研" class="headerlink" title="flowable调研"></a>flowable调研</h3><h5 id="设计器配置，流程设计导出"><a href="#设计器配置，流程设计导出" class="headerlink" title="设计器配置，流程设计导出"></a>设计器配置，流程设计导出</h5><p>各大开源流程工具都遵从BPM标准, 一般流程设计都是以BPM格式的XML文件进行定义。但我们不可能去手写配置文件, 一般都借助于可视化设计器。</p>
+<ol>
+<li>官方给的Web设计器大致分两个版本, 需要自行部署到Tomcat运行, 并且需要连接到数据库。</li>
+</ol>
+<p><img src="C:\Users\Pleasant\AppData\Roaming\Typora\typora-user-images\image-20231211092755163.png" alt="image-20231211092755163"></p>
+<p>官网下载, 只有2个包</p>
+<ul>
+<li>flowable-rest</li>
+<li>flowable-ui</li>
+</ul>
+<p>访问地址:</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/flowable-rest/docs/">http://localhost:8080/flowable-rest/docs/</a> (login&#x2F;password: rest-admin&#x2F;test)</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/flowable-ui">http://localhost:8080/flowable-ui</a> (login&#x2F;password: admin&#x2F;test)</p>
+<p>修改数据源:</p>
+<p>打开&#x2F;WEB-INF&#x2F;classes&#x2F;flowable-default.properties, 搜索spring.datasource相关配置, 改为步骤1中的数据库地址即可。</p>
+<ol start="2">
+<li>插件</li>
+</ol>
+<p><img src="C:\Users\Pleasant\AppData\Roaming\Typora\typora-user-images\image-20231211105433722.png" alt="image-20231211105433722"></p>
+<h5 id="spring配置，依赖（也可以不用spring）"><a href="#spring配置，依赖（也可以不用spring）" class="headerlink" title="spring配置，依赖（也可以不用spring）"></a>spring配置，依赖（也可以不用spring）</h5><p>主要就是注入相关包，不用spring就自己设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyTestController</span> &#123; </span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> ProcessEngine processEngine;</span><br><span class="line">		</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> RepositoryService repositoryService;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注入实例</p>
+<h5 id="Flowable引擎，包含的服务"><a href="#Flowable引擎，包含的服务" class="headerlink" title="Flowable引擎，包含的服务"></a>Flowable引擎，包含的服务</h5><p>主要包含一个引擎和七个服务</p>
+<p> 1 ProcessEngines</p>
+<p>流程引擎的引用, 单例唯一, 可以通过它获得所有api的服务对象</p>
+<p>数据库连接：spring和非spring</p>
+<p> 2 RepositoryService</p>
+<h5 id="部署两种：key-or-id"><a href="#部署两种：key-or-id" class="headerlink" title="部署两种：key or id"></a>部署两种：key or id</h5><p>管理与控制部署(deployments)与流程定义(process definitions)的操作</p>
+<ul>
+<li>部署上传定义文件xml至引擎, 部署包中的所有流程都可以启动。</li>
+<li>查询引擎现有的部署与流程定义。</li>
+<li>暂停或激活部署中的某些流程，或整个部署。</li>
+<li>获取各种资源，比如部署中保存的文件，或者引擎自动生成的流程图。</li>
+<li>获取POJO版本的流程定义。它可以用Java而不是XML的方式查看流程。</li>
+</ul>
+<p> 3 TaskService</p>
+<p>人类用户参与操作的任务, 即我们开发的软件中”我的待办任务”等内容.</p>
+<ul>
+<li>查询分派给用户或组的任务</li>
+<li>创建独立运行(standalone)任务。这是一种没有关联到流程实例的任务。</li>
+<li>决定任务的执行用户(assignee)，或者将用户通过某种方式与任务关联。</li>
+<li>认领(claim)任务。认领是指某人决定成为任务的执行用户，也即他将会完成这个任务。</li>
+<li>完成(complete)任务是指“做这个任务要求的工作”，通常是填写某个表单。</li>
+</ul>
+<p> 4 IdentityService </p>
+<ul>
+<li>用于管理（创建，更新，删除，查询……）组与用户。</li>
+<li>在运行时, 系统并不做任何用户检查, 即用户表中可能不存在该用户。</li>
+</ul>
+<p> 5 FormService </p>
+<p>是可选服务。提供简单的表单功能</p>
+<ul>
+<li>引入了开始表单(start form)与任务表单(task form)的概念。</li>
+<li>开始表单是在流程实例启动前显示的表单，而任务表单是用户完成任务时显示的表单。</li>
+</ul>
+<p> 6 HistoryService </p>
+<p>查询Flowable引擎收集的所有历史数据。</p>
+<p>运行期的数据会同步至历史数据表, 因此运行期的数据表始终保持在一个比较低的数据量, 而历史表则越来越大</p>
+<ul>
+<li>流程实例启动时间</li>
+<li>谁在执行哪个任务</li>
+<li>完成任务花费的事件</li>
+<li>每个流程实例的执行路径</li>
+</ul>
+<p> 7 ManagementService </p>
+<p>通常在用Flowable编写用户应用时不需要使用。它可以读取数据库表与表原始数据的信息，也提供了对作业(job)的查询与管理操作。</p>
+<p>使用作业，包括定时器(timer)，异步操作(asynchronous continuation)，延时暂停&#x2F;激活(delayed suspension&#x2F;activation)等等</p>
+<p> 8 DynamicBpmnService </p>
+<p>可用于修改流程定义中的部分内容，而不需要重新部署它。例如可以修改流程定义中一个用户任务的办理人设置，或者修改一个服务任务中的类名。</p>
+<h5 id="负责人绑定"><a href="#负责人绑定" class="headerlink" title="负责人绑定"></a>负责人绑定</h5><ol>
+<li>设计图内绑定</li>
+<li>变量绑定（在设计图输入变量）</li>
+<li>函数绑定（设计图输入函数，返回函数结果）</li>
+</ol>
+<h5 id="监听函数"><a href="#监听函数" class="headerlink" title="监听函数"></a>监听函数</h5><p>可绑定的type值</p>
+<p>create</p>
+<p>assignment</p>
+<p>complete</p>
+<p>delete</p>
+<p>大致设想流程（初版）：</p>
+<ol>
+<li>设计图实现，导出</li>
+<li>后端启动工作流，配置BPM格式XML文件</li>
+<li>用户查询现在的工作进度，回显前端，选择是否进行当前步骤</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Task&gt; list = taskService.createTaskQuery()</span><br><span class="line">    			.taskAssignee(<span class="string">&quot;zhangsan&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="4">
+<li>后端调相关任务，完成后执行工作流complete</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskService.complete(<span class="string">&quot;taskid:&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>重复34，期间可以绑定函数</li>
+</ol>
+<p>比较：</p>
+<p>activiti7：免费，完全开源</p>
+<p>flowable：基本免费，部分开源（低版本）</p>
+<p>Camunda：基本免费，部分开源</p>
+<h5 id="Activiti"><a href="#Activiti" class="headerlink" title="Activiti:"></a>Activiti:</h5><p> Activiti在目前来看有点不思进取，核心功能和内核的优化·并没有太大进步，着力点全在商业版和云上面，核心只支持BPMN2协议一，跟6版本没有什么区别。如果你是一个老的Activiti使用者，并且只是用BPMN2协议，可以选用Activiti (非Cloud版本)。</p>
+<h5 id="Flowable"><a href="#Flowable" class="headerlink" title="Flowable:"></a>Flowable:</h5><p> Flowable不管是功能层面还是在代码层面来讲，都是这3个中最重的，当初跟Activiti分道扬镳的原因也是因为理念不一样，Flowable更注重其功能性、扩展性和性能。在上面表格中，历史异步归档和异步任务全局锁都是对性能的极大优化，特别是异步任务这一项，当年在使用Activiti的使用是一个极大的困扰，因为异步任务的吞吐反而会随着实例数的增加而加速恶化。</p>
+<p>Flowable比较臃肿，它支持了太多的东西，以致于如果想做POC或者Demo，环境搭建这一步都够呛。但是如果你本身就想做一个扩展性强的，性能高的工作流平台(SaaS\PaaS),Flowable是不二的选择。</p>
+<h5 id="Camunda"><a href="#Camunda" class="headerlink" title="Camunda:"></a>Camunda:</h5><p>Camunda是这3个里面比较轻量的一个，但是它并没有去掉PVM这个性能较差的流程推动引擎9，所以如果你对性能要求很高的话，PVM肯定是不能满足的(Activiti已经在6.X版本的时候放弃了PVM，Flowable亦是如此)。</p>
+<p>但是Camunda有一个好东西就是它的编辑器，它是基于bpmn.io的bpmn.js,cmmn.,js,dmn.js来开发的，并且开源了自己的组件库，所以，如果你想做一个轻巧的、灵活的、定制性强的编辑器，工作流是嵌入式的，那么Camunda是一个好选择。</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-12-01T02:56:31.975Z" title="2023/12/1 10:56:31">2023-12-01</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-12-01T02:56:32.136Z" title="2023/12/1 10:56:32">2023-12-01</time></span><span class="level-item">a minute read (About 196 words)</span></div></div><div class="content"><h3 id="560-和为-K-的子数组"><a href="#560-和为-K-的子数组" class="headerlink" title="560. 和为 K 的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/">560. 和为 K 的子数组</a></h3><p>给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你统计并返回 <em>该数组中和为 <code>k</code> 的子数组的个数</em> 。</p>
 <p>子数组是数组中元素的连续非空序列。</p>
 <p><strong>示例 1：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,1,1], k = 2</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
@@ -134,104 +380,7 @@
 <p>mutex：并发锁</p>
 <p>Channel和锁的应用场景有什么区别</p>
 <p>有数据流使用channel，单独状态变化使用锁</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-11-20T10:59:39.232Z" title="2023/11/20 18:59:39">2023-11-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-11-20T10:59:39.447Z" title="2023/11/20 18:59:39">2023-11-20</time></span><span class="level-item">2 minutes read (About 285 words)</span></div></div><div class="content"><p>11.20 力扣</p>
-<h3 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum/">39. 组合总和</a></h3><p>给你一个 <strong>无重复元素</strong> 的整数数组 <code>candidates</code> 和一个目标整数 <code>target</code> ，找出 <code>candidates</code> 中可以使数字和为目标数 <code>target</code> 的 所有 <strong>不同组合</strong> ，并以列表形式返回。你可以按 <strong>任意顺序</strong> 返回这些组合。</p>
-<p><code>candidates</code> 中的 <strong>同一个</strong> 数字可以 <strong>无限制重复被选取</strong> 。如果至少一个数字的被选数量不同，则两种组合是不同的。 </p>
-<p>对于给定的输入，保证和为 <code>target</code> 的不同组合数少于 <code>150</code> 个。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates = [2,3,6,7], target = 7</span><br><span class="line">输出：[[2,2,3],[7]]</span><br><span class="line">解释：</span><br><span class="line">2 和 3 可以形成一组候选，2 + 2 + 3 = 7 。注意 2 可以使用多次。</span><br><span class="line">7 也是一个候选， 7 = 7 。</span><br><span class="line">仅有这两种组合。</span><br></pre></td></tr></table></figure>
-
-<p>解法：回溯，如果超过target就剪枝</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">combinationSum</span>(<span class="params">self, candidates, target</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type candidates: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        res = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">backtrack</span>(<span class="params">x, <span class="built_in">sum</span>, index</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">sum</span> &gt; target:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="built_in">sum</span> == target:</span><br><span class="line">                chekc = copy.deepcopy(x)</span><br><span class="line">                chekc.sort()</span><br><span class="line">                <span class="keyword">if</span> chekc <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">                    res.append(chekc)</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                </span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> candidates[index:<span class="built_in">len</span>(candidates)]:</span><br><span class="line"></span><br><span class="line">                    backtrack(x + [i], <span class="built_in">sum</span>+i, index)</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        backtrack([], <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-11-14T07:28:55.478Z" title="2023/11/14 15:28:55">2023-11-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-11-14T07:28:55.757Z" title="2023/11/14 15:28:55">2023-11-14</time></span><span class="level-item">7 minutes read (About 1124 words)</span></div></div><div class="content"><p>11.14面经</p>
-<h3 id="B-树的操作时间复杂度"><a href="#B-树的操作时间复杂度" class="headerlink" title="B+树的操作时间复杂度"></a>B+树的操作时间复杂度</h3><p>增加：logn</p>
-<p>删除：logn</p>
-<p>查找：logn</p>
-<h3 id="时间复杂度更低的数据结构"><a href="#时间复杂度更低的数据结构" class="headerlink" title="时间复杂度更低的数据结构"></a>时间复杂度更低的数据结构</h3><p>红黑树 自平衡二叉树</p>
-<p>哈希表 o（1）</p>
-<h3 id="Mysql的ACID是什么，如何保证"><a href="#Mysql的ACID是什么，如何保证" class="headerlink" title="Mysql的ACID是什么，如何保证"></a>Mysql的ACID是什么，如何保证</h3><p>原子性：事务要么做完要么不做</p>
-<p>一致性：状态改变不影响数据库的完整性约束</p>
-<p>隔离性：一个事务不影响另一个事务</p>
-<p>持久性：一但写入，永久修改，数据库故障也不丢失</p>
-<p>保证方法：事务隔离级别，锁，日志，快照等级制</p>
-<h3 id="Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据"><a href="#Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据" class="headerlink" title="Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据"></a>Go的channel了解吗，Channel的作用是什么，可以存储什么类型的数据</h3><p>作用是协程之间的数据传输和同步，可以存储任何类型包括内置类型（整数，字符串），自定义类型（接口等）</p>
-<h3 id="Channel的底层实现"><a href="#Channel的底层实现" class="headerlink" title="Channel的底层实现"></a>Channel的底层实现</h3><p>两个等待队列和锁来实现的</p>
-<ol>
-<li><strong>等待队列：</strong> 每个 channel 都有两个相关联的等待队列，一个用于存储发送操作的 goroutine，另一个用于存储接收操作的 goroutine。当一个 goroutine 尝试发送或接收数据时，如果 channel 当前为空（对于接收操作）或已满（对于发送操作），则该 goroutine 将会被加入到相应的等待队列中，直到条件满足。这样可以保证发送和接收操作的顺序性和安全性。</li>
-<li><strong>锁：</strong> 除了等待队列，每个 channel 还使用了互斥锁来保护内部数据结构，以确保并发访问的安全性。在进行发送和接收操作时，需要先获取相应的锁，以防止多个 goroutine 同时修改 channel 的状态。</li>
-</ol>
-<h3 id="Go的协程调度模型"><a href="#Go的协程调度模型" class="headerlink" title="Go的协程调度模型"></a>Go的协程调度模型</h3><p>一个线程管理多个协程，线程称为M（machine），有个线程队列，还有个全局队列，还有个调度器</p>
-<p>以下是 Goroutine 调度模型的关键概念和特点：</p>
-<ol>
-<li><strong>Goroutine：</strong> Goroutine 是 Go 语言并发编程的基本单位。它是一种轻量级的执行体，由 Go 运行时（runtime）管理。与传统的线程相比，Goroutine 的创建和销毁开销很小，可以高效地创建大量的 Goroutine。</li>
-<li><strong>调度器：</strong> Go 语言的运行时包含了一个调度器，负责将 Goroutine 安排到操作系统线程上执行。调度器会根据一定的策略将 Goroutine 随机分配给线程，并在需要时进行抢占式调度。</li>
-<li><strong>操作系统线程：</strong> 在 Goroutine 调度模型中，操作系统线程由 Go 运行时管理，被称为 M（Machine）。每个 M 都有一个固定大小的 Goroutine 队列，它负责执行队列中的 Goroutine。当一个 Goroutine 阻塞时，M 可以将其从队列中移除，并执行其他可运行的 Goroutine。</li>
-<li><strong>全局运行队列：</strong> 除了每个 M 自己的 Goroutine 队列外，调度器还维护了一个全局运行队列（称为 G 队列），用于存放所有可运行的 Goroutine。当某个 M 的 Goroutine 队列为空时，它可以从全局队列中获取 Goroutine 进行执行。</li>
-</ol>
-<h3 id="创建一个goroutine时会给它分配什么数据"><a href="#创建一个goroutine时会给它分配什么数据" class="headerlink" title="创建一个goroutine时会给它分配什么数据"></a>创建一个goroutine时会给它分配什么数据</h3><ol>
-<li><strong>栈空间（Stack Space）：</strong> 每个 Goroutine 都有自己的栈空间，用于存储局部变量、函数调用信息和其他相关数据。栈空间的大小默认为 2KB，并且可以根据需要自动增长。每个 Goroutine 的栈空间是独立的，因此它们可以同时执行不同的函数调用。</li>
-<li><strong>Goroutine 结构体（Goroutine Struct）：</strong> 每个 Goroutine 都有一个与之关联的 Goroutine 结构体，其中包含了一些重要的信息，如 Goroutine 的状态、栈空间的起始地址等。这个结构体由 Go 运行时管理，用于跟踪和控制 Goroutine 的执行。</li>
-<li><strong>Goroutine 栈指针（Stack Pointer）：</strong> Goroutine 栈指针是一个指向当前 Goroutine 栈顶的指针，用于记录当前 Goroutine 的执行位置。当 Goroutine 需要被暂停或切换到其他 Goroutine时，栈指针的值将被保存，并在再次执行该 Goroutine 时恢复。</li>
-</ol>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-11-14T02:55:50.987Z" title="2023/11/14 10:55:50">2023-11-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-11-14T03:00:35.930Z" title="2023/11/14 11:00:35">2023-11-14</time></span><span class="level-item">3 minutes read (About 432 words)</span></div></div><div class="content"><p>11.14面经</p>
-<h3 id="数据库索引调优"><a href="#数据库索引调优" class="headerlink" title="数据库索引调优"></a>数据库索引调优</h3><ol>
-<li><h5 id="回表次数太多使用全盘扫描"><a href="#回表次数太多使用全盘扫描" class="headerlink" title="回表次数太多使用全盘扫描"></a>回表次数太多使用全盘扫描</h5></li>
-</ol>
-<p>回表：当对一个列创建索引之后，索引会包含该列的键值及键值对应行所在的rowid。通过索引中记录的rowid访问表中的数据就叫回表。</p>
-<p>回表次数太多会严重影响SQL性能，如果回表次数太多，就不应该走索引扫描，应该直接走全表扫描。</p>
-<ol start="2">
-<li><h5 id="前导模糊查询不能索引"><a href="#前导模糊查询不能索引" class="headerlink" title="前导模糊查询不能索引"></a>前导模糊查询不能索引</h5></li>
-<li><h5 id="遵循最左原则"><a href="#遵循最左原则" class="headerlink" title="遵循最左原则"></a>遵循最左原则</h5></li>
-</ol>
-<p>举例来说，假设有一个复合索引 (A, B, C)，那么最左前缀原则要求：</p>
-<ol>
-<li><p>查询条件中最好包含A字段，可以只包含A字段，也可以同时包含A、B、C字段。</p>
-</li>
-<li><p>如果查询条件包含B字段，那么一定要包含A字段，不可以只包含B字段和C字段。</p>
-</li>
-<li><p>如果查询条件包含C字段，那么一定要包含A字段和B字段，不可以只包含C字段。</p>
-</li>
-<li><h5 id="负向条件查询不能使用索引，可以优化为in查询"><a href="#负向条件查询不能使用索引，可以优化为in查询" class="headerlink" title="负向条件查询不能使用索引，可以优化为in查询"></a>负向条件查询不能使用索引，可以优化为in查询</h5></li>
-<li><h5 id="数据库执行计算不会命中索引"><a href="#数据库执行计算不会命中索引" class="headerlink" title="数据库执行计算不会命中索引"></a>数据库执行计算不会命中索引</h5></li>
-</ol>
-<h3 id="数据库底层实现"><a href="#数据库底层实现" class="headerlink" title="数据库底层实现"></a>数据库底层实现</h3><p>b+树</p>
-<p>哈希索引：哈希索引使用哈希函数将索引键值映射到一个哈希桶（Hash Bucket）中，然后通过哈希桶的指针直接访问对应的数据。哈希索引适用于等值查询，可以在常数时间内找到数据。</p>
-<p>然而，由于哈希函数的不确定性，哈希索引不支持范围查询和排序操作。</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2023-11-13T09:14:31.793Z" title="2023/11/13 17:14:31">2023-11-13</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-11-13T09:14:31.951Z" title="2023/11/13 17:14:31">2023-11-13</time></span><span class="level-item">5 minutes read (About 809 words)</span></div></div><div class="content"><p>力扣复习11.13</p>
-<h3 id="31-下一个排列"><a href="#31-下一个排列" class="headerlink" title="31. 下一个排列"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-permutation/">31. 下一个排列</a></h3><p>整数数组的一个 <strong>排列</strong> 就是将其所有成员以序列或线性顺序排列。</p>
-<ul>
-<li>例如，<code>arr = [1,2,3]</code> ，以下这些都可以视作 <code>arr</code> 的排列：<code>[1,2,3]</code>、<code>[1,3,2]</code>、<code>[3,1,2]</code>、<code>[2,3,1]</code> 。</li>
-</ul>
-<p>整数数组的 <strong>下一个排列</strong> 是指其整数的下一个字典序更大的排列。更正式地，如果数组的所有排列根据其字典顺序从小到大排列在一个容器中，那么数组的 <strong>下一个排列</strong> 就是在这个有序容器中排在它后面的那个排列。如果不存在下一个更大的排列，那么这个数组必须重排为字典序最小的排列（即，其元素按升序排列）。</p>
-<ul>
-<li>例如，<code>arr = [1,2,3]</code> 的下一个排列是 <code>[1,3,2]</code> 。</li>
-<li>类似地，<code>arr = [2,3,1]</code> 的下一个排列是 <code>[3,1,2]</code> 。</li>
-<li>而 <code>arr = [3,2,1]</code> 的下一个排列是 <code>[1,2,3]</code> ，因为 <code>[3,2,1]</code> 不存在一个字典序更大的排列。</li>
-</ul>
-<p>给你一个整数数组 <code>nums</code> ，找出 <code>nums</code> 的下一个排列。</p>
-<p>必须**<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地 </a>**修改，只允许使用额外常数空间。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3]</span><br><span class="line">输出：[1,3,2]</span><br></pre></td></tr></table></figure>
-
-<p>两边扫描，找较小数和较大数，最后排下序</p>
-<p>注意到下一个排列总是比当前排列要大，除非该排列已经是最大的排列。我们希望找到一种方法，能够找到一个大于当前序列的新序列，且变大的幅度尽可能小。具体地：</p>
-<p>我们需要将一个左边的「较小数」与一个右边的「较大数」交换，以能够让当前排列变大，从而得到下一个排列。</p>
-<p>同时我们要让这个「较小数」尽量靠右，而「较大数」尽可能小。当交换完成后，「较大数」右边的数需要按照升序重新排列。这样可以在保证新排列大于原来排列的情况下，使变大的幅度尽可能小。</p>
-<p>以排列[4,5,2,6,3,1] 为例：</p>
-<p>我们能找到的符合条件的一对「较小数」与「较大数」的组合为 222 与 333，满足「较小数」尽量靠右，而「较大数」尽可能小。</p>
-<p>当我们完成交换后排列变为[4,5,3,6,2,1]，此时我们可以重排「较小数」右边的序列，序列变为 [][4,5,3,1,2,6][4,5,3,1,2,6]。</p>
-<h3 id="22-括号生成"><a href="#22-括号生成" class="headerlink" title="22. 括号生成"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/generate-parentheses/">22. 括号生成</a></h3><p>数字 <code>n</code> 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 <strong>有效的</strong> 括号组合。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：[&quot;((()))&quot;,&quot;(()())&quot;,&quot;(())()&quot;,&quot;()(())&quot;,&quot;()()()&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>做回溯法实现所有括号，然后判断是否满足题意</p>
-<p>注意判断函数可以写的很简单</p>
-<p>代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">generateParenthesis</span>(<span class="params">self, n</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">check</span>(<span class="params">s</span>):</span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">                <span class="keyword">if</span> i == <span class="string">&#x27;(&#x27;</span>:</span><br><span class="line">                    count += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    count -=<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> count &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">if</span> count != <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">backtrack</span>(<span class="params">x</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(x) == n*<span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span> check(x):</span><br><span class="line">                    res.append(<span class="string">&quot;&quot;</span>.join(x))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                x.append(<span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">                backtrack(x)</span><br><span class="line">                x.pop()</span><br><span class="line">                x.append(<span class="string">&#x27;)&#x27;</span>)</span><br><span class="line">                backtrack(x)</span><br><span class="line">                x.pop()</span><br><span class="line">        backtrack([])</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
-
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/6/">6</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="HanJ Young"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HanJ Young</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">52</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/codewhale-my" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-01T02:56:31.975Z">2023-12-01</time></p><p class="title"><a href="/2023/12/01/560.%20%E5%92%8C%E4%B8%BA%20K%20%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-29T08:55:27.869Z">2023-11-29</time></p><p class="title"><a href="/2023/11/29/438.%20%E6%89%BE%E5%88%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-27T03:34:28.149Z">2023-11-27</time></p><p class="title"><a href="/2023/11/27/11.27%20%E9%9D%A2%E7%BB%8F/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-27T02:29:15.869Z">2023-11-27</time></p><p class="title"><a href="/2023/11/27/%E5%B0%9D%E8%AF%95%E6%89%BE%E5%88%B0%E8%87%AA%E5%B7%B1%E5%81%B6%E5%B0%94%E4%B8%8D%E5%BF%AB%E4%B9%90%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-11-22T03:17:30.814Z">2023-11-22</time></p><p class="title"><a href="/2023/11/22/49.%20%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/"> </a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">52</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="HJSpace" height="28"></a><p class="is-size-7"><span>&copy; 2023 Starry sky, Architecture and Travel</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/6/">6</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="HanJ Young"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">HanJ Young</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Chengdu</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">56</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/codewhale-my" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-14T09:06:48.114Z">2023-12-14</time></p><p class="title"><a href="/2023/12/14/12.14%E9%9D%A2%E7%BB%8F/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-13T09:45:22.092Z">2023-12-13</time></p><p class="title"><a href="/2023/12/13/HashMap%E4%BC%9A%E4%BA%A7%E7%94%9F%E5%93%AA%E4%BA%9B%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%9A%84/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-12T08:44:24.167Z">2023-12-12</time></p><p class="title"><a href="/2023/12/12/12.12%20%E9%9D%A2%E7%BB%8F/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-11T01:43:52.868Z">2023-12-11</time></p><p class="title"><a href="/2023/12/11/flowable%E8%B0%83%E7%A0%94/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-12-01T02:56:31.975Z">2023-12-01</time></p><p class="title"><a href="/2023/12/01/560.%20%E5%92%8C%E4%B8%BA%20K%20%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/"> </a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">56</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="HJSpace" height="28"></a><p class="is-size-7"><span>&copy; 2023 Starry sky, Architecture and Travel</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
